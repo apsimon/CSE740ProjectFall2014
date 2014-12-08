@@ -1,0 +1,19 @@
+- To execute a random walk with restart on this data using Pegasus follow
+  these steps:
+	- Make sure to have Hadoop and Pegasus installed
+	- From the pegasus console add the desired edge file:
+		ex: add /path/to/2001_file investments_2001
+	- Make sure to add the query file to the HDFS:
+		ex: hadoop fs -mkdir query_dir
+		    hadoop fs -put investments2001.query query_dir
+	- From the pegasus console do:
+		compute rwr investments_2001
+		parameters:
+			query_path: query_dir
+			#_of_nodes: see graphSizes.txt for total # of nodes
+				    for the year 2001
+			#_of_reducers: 1
+			makesym or nosym: nosym
+
+- If in need of additional help, see the pegasus user's guide:
+	http://www.cs.cmu.edu/~pegasus/PegasusUserGuide.pdf
